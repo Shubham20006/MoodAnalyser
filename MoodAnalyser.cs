@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 namespace MoodAnalyserProject
 {
     public class MoodAnalyser
-    {
-            public string AnalyzeMood(string message)
+    {           
+            string message;        
+        public MoodAnalyser(string Message)
+        { 
+            this.message=Message;
+        }
+            public string AnalyzeMood()
             {
                 if (message.ToLower().Contains("happy"))
                 {

@@ -30,9 +30,9 @@ namespace MoodAnalyserProject
                     return "sad";
                 }
             }
-            catch(CustomException e)
+            catch(NullReferenceException)
             {
-                return e.Message;
+                 throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, "Mood should not be NULL");
             }
         } 
         

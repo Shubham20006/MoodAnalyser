@@ -1,3 +1,4 @@
+
 using MoodAnalyserProject;
 
 namespace TestProject1
@@ -26,7 +27,7 @@ namespace TestProject1
         public void TestMethodForCustomizedNullException()
 
         {
-            string expected = "Mood should not be null";
+            string expected = "Mood should not be NULL";
             try
             {
 
@@ -54,6 +55,57 @@ namespace TestProject1
                 Assert.AreEqual(expected, ex.Message);
             }
 
+        }
+        [TestMethod]
+        public void Fordefault()
+        {
+            MoodAnalyser expected = new MoodAnalyser();
+            object obj = null;
+            try
+            {
+                obj = MoodAnalyserFactory.CreateMoodAnalyse("ModeAnalyserPro.MoodAnalyser", "MoodAnalyser");
+
+            }
+            catch (CustomException e)
+            {
+                throw new System.Exception(e.Message);
+            }
+        }
+        [TestMethod]
+
+        public void Reflection_Return_Default_Constructor_No_Class_Found()
+        {
+            string expected = "Class not Found";
+            object obj = null;
+            try
+            {
+
+                obj = MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserProject.Mood", "Mood");
+
+            }
+            catch (CustomException actual)
+
+            {
+                Assert.AreEqual(expected, actual.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Reflection_Return_Default_Constructor_No_Constructor_Found()
+        {
+            string expected = "Constructor not found";
+
+            try
+            {
+
+                MoodAnalyserFactory.CreateMoodAnalyse("MoodAnalyserPro.MoodAnalyser", "MoodAnaly");
+
+            }
+            catch (CustomException actual)
+
+            {
+                Assert.AreEqual(expected, actual.Message);
+            }
         }
     }
 }

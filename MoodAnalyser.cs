@@ -9,9 +9,14 @@ namespace MoodAnalyserProject
     public class MoodAnalyser
     {
         string message;
-        public MoodAnalyser(string Message)
+
+        public MoodAnalyser()
         {
-            this.message = Message;
+        }
+
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
         }
         public string AnalyzeMood()
         {
@@ -20,7 +25,7 @@ namespace MoodAnalyserProject
                 if (message.Equals(string.Empty))
                 {
                     throw new CustomException(CustomException.ExceptionType.EMPTY_EXCEPTION, "Mood should not be empty");
-                }           
+                }
                 else if (message.ToLower().Contains("happy"))
                 {
                     return "happy";
@@ -30,12 +35,13 @@ namespace MoodAnalyserProject
                     return "sad";
                 }
             }
-            catch(CustomException e)
+            catch (NullReferenceException)
             {
-                return e.Message;
+                throw new CustomException(CustomException.ExceptionType.NULL_EXCEPTION, "Mood should not be NULL");
+
             }
-        } 
-        
+        }
+
     }
 }
 

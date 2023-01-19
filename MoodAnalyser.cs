@@ -12,6 +12,7 @@ namespace MoodAnalyserProject
 
         public MoodAnalyser()
         {
+            Console.WriteLine("Default constructor");
         }
 
         public MoodAnalyser(string message)

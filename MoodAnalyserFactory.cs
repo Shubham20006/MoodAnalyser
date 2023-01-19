@@ -18,12 +18,13 @@ namespace MoodAnalyserProject
                 }
                 catch (ArgumentNullException)
                 {
-                    throw new CustomException(CustomException.ExceptionType.CLASS_NOT_FOUND, "Class not Found");
+                    throw new CustomException(CustomException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "Constructor not found");
+                    
                 }
             }
             else
             {
-                throw new CustomException(CustomException.ExceptionType.CONSTRUCTOR_NOT_FOUND, "Constructor not found");
+                throw new CustomException(CustomException.ExceptionType.CLASS_NOT_FOUND, "Class not Found");
             }
         }
     }
